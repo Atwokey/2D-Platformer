@@ -644,8 +644,8 @@ GameObject:
   - component: {fileID: 1331207179}
   - component: {fileID: 1331207182}
   - component: {fileID: 1331207184}
-  - component: {fileID: 1331207183}
   - component: {fileID: 1331207181}
+  - component: {fileID: 1331207183}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -712,12 +712,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331207178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.9330416, y: -0.32334995, z: 1.5878062}
+  m_LocalPosition: {x: -0.030232906, y: -3.997238, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 527040787}
-  m_Father: {fileID: 2089695500}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1331207181
 CapsuleCollider2D:
@@ -763,11 +763,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1331207178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e1c23cc63dbb9f49a3a4ccbd5872441, type: 3}
+  m_Script: {fileID: 11500000, guid: a3dd08e8d3f5d254291c2943c3ad5f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
-  _force: 5
+  _speed: 5
+  _jumpForce: 5
 --- !u!50 &1331207184
 Rigidbody2D:
   serializedVersion: 4
@@ -780,7 +780,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -822,9 +822,8 @@ Transform:
   - {fileID: 423461044}
   - {fileID: 690262624}
   - {fileID: 979702059}
-  - {fileID: 1331207180}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &2089695501
 CompositeCollider2D:
