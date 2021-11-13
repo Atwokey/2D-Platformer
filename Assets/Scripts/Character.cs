@@ -9,6 +9,9 @@ public class Character : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private int _damage;
+    [SerializeField] private CircleCollider2D _attackRangeCollider;
+    [SerializeField] private float _colliderOffsetX;
 
     private StateMachine _stateMachine;
     private StandingState _standing;
@@ -25,7 +28,7 @@ public class Character : MonoBehaviour
     public AttackState Attacking => _attacking;
     public bool Grounded => _grounded;
     public Animator Animator => _animator;
-
+    public int Damage => _damage;
 
     private void Start()
     {
@@ -50,7 +53,10 @@ public class Character : MonoBehaviour
 
     public void Move(float direction)
     {
-        _renderer.flipX = (direction < 0) ? true : false;
+        if (direction > 0)
+            _renderer.flipX = false;
+        else if (direction < 0)
+            _renderer.flipX = true;
 
         transform.Translate(new Vector3(direction * _speed * Time.deltaTime, 0));
     }
@@ -60,6 +66,14 @@ public class Character : MonoBehaviour
         transform.Translate(Vector2.up * 0.2f);
         _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         _grounded = false;
+    }
+
+    public  void Attack()
+    {
+        if (_renderer.flipX)
+            _attackRangeCollider.offset = new Vector2(-_colliderOffsetX, _attackRangeCollider.offset.y);
+        else
+            _attackRangeCollider.offset = new Vector2(_colliderOffsetX, _attackRangeCollider.offset.y);
     }
 
 

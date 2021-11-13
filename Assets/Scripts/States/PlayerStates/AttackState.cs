@@ -13,8 +13,9 @@ public class AttackState : State
     public override void Enter()
     {
         base.Enter();
-        _delay = 0.7f;
+        _delay = 0.5f;
         _elapsedTime = 0;
+        Character.Attack();
         Character.AnimationPlay("attack1");
         
     }
