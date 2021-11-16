@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundedState : State
+public class GroundedState : PlayerState
 {
     private float _horizontalInput;
 
-    public GroundedState(Character character, StateMachine stateMachine) : base(character, stateMachine)
+    public GroundedState(StateMachine stateMachine, Character character) : base(stateMachine, character)
     {
     }
 

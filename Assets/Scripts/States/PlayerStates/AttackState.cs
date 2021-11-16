@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : State
+public class AttackState : PlayerState
 {
     private float _delay;
     private float _elapsedTime;
-    public AttackState(Character character, StateMachine stateMachine) : base(character, stateMachine)
+
+    public AttackState(StateMachine stateMachine, Character character) : base(stateMachine, character)
     {
     }
 

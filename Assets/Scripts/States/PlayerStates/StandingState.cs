@@ -7,7 +7,7 @@ public class StandingState : GroundedState
     private bool _jumped;
     private bool _attacked;
 
-    public StandingState(Character character, StateMachine stateMachine) : base(character, stateMachine)
+    public StandingState(StateMachine stateMachine, Character character) : base(stateMachine, character)
     {
     }
 

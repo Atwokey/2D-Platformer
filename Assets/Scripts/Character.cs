@@ -34,9 +34,9 @@ public class Character : MonoBehaviour
     {
         _stateMachine = new StateMachine();
 
-        _standing = new StandingState(this, _stateMachine);
-        _jumping = new JumpingState(this, _stateMachine);
-        _attacking = new AttackState(this, _stateMachine);
+        _standing = new StandingState(_stateMachine, this);
+        _jumping = new JumpingState(_stateMachine, this);
+        _attacking = new AttackState(_stateMachine, this);
 
         _stateMachine.Initialize(_standing);
 

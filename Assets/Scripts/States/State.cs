@@ -4,12 +4,10 @@ using UnityEngine;
 
 public abstract class State
 {
-    protected Character Character;
     protected StateMachine StateMachine;
 
-    public State(Character character, StateMachine stateMachine)
+    public State(StateMachine stateMachine)
     {
-        Character = character;
         StateMachine = stateMachine;
     }
 

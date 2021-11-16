@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpingState : GroundedState
 {
-    public JumpingState(Character character, StateMachine stateMachine) : base(character, stateMachine)
+    public JumpingState(StateMachine stateMachine, Character character) : base(stateMachine, character)
     {
     }
 
