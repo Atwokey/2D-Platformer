@@ -2,27 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpingState : GroundedState
+public class JumpingState : MovementState
 {
-    public JumpingState(StateMachine stateMachine, Character character) : base(stateMachine, character)
+    public JumpingState(StateMachine stateMachine, Player player) : base(stateMachine, player)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
-        Character.Jump();
-        Character.AnimationPlay("jump");
+        Player.GroundHandling.Jumped();
+        Player.Movement.Jump();
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        if (Character.Grounded)
-        {
-            Character.AnimationStop();
-            StateMachine.ChangeState(Character.Standing);
-        }
+        if (Player.GroundHandling.Grounded)
+            StateMachine.ChangeState(Player.Standing);
     }
 }

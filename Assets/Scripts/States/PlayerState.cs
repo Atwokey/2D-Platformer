@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class PlayerState : State
 {
-    protected Character Character;
+    protected Player Player;
 
-    public PlayerState(StateMachine stateMachine, Character character) : base(stateMachine)
+    public PlayerState(StateMachine stateMachine, Player player) : base(stateMachine)
     {
-        Character = character;
+        Player = player;
     }
 }

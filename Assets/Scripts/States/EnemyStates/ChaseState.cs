@@ -19,13 +19,13 @@ public class ChaseState : EnemyState
         Enemy.StartAnimation("skeleton_move");
         Enemy.Chase();
 
-        if(Enemy.CheckDistance(Enemy.Character.transform.position) >= Enemy.BlindDistance)
+        if(Enemy.CheckDistance(Enemy.Player.transform.position) >= Enemy.BlindDistance)
         {
             Enemy.StopAnimation();
             Enemy.StateMachine.ChangeState(Enemy.Patroling);
         }
 
-        if(Enemy.CheckDistance(Enemy.Character.transform.position) <= Enemy.AttackDistance)
+        if(Enemy.CheckDistance(Enemy.Player.transform.position) <= Enemy.AttackDistance)
         {
             Enemy.StopAnimation();
             Enemy.StateMachine.ChangeState(Enemy.Attacking);

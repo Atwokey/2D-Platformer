@@ -20,14 +20,14 @@ public class HitState : EnemyState
     public override void LogicUpdate()
     {
         _elapsedTime += Time.deltaTime;
-
         if(_elapsedTime >= Enemy.DelayBeforeAttack)
         {
+            Enemy.StopAnimation();
             Enemy.StartAnimation("_skeleton_attack");
             _elapsedTime = 0;
         }
 
-        if (Enemy.CheckDistance(Enemy.Character.transform.position) >= Enemy.ChaseDistance)
+        if (Enemy.CheckDistance(Enemy.Player.transform.position) >= Enemy.ChaseDistance)
         {
             Enemy.StopAnimation();
             Enemy.StateMachine.ChangeState(Enemy.Chasing);

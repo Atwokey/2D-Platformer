@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandingState : GroundedState
+public class StandingState : MovementState
 {
     private bool _jumped;
     private bool _attacked;
 
-    public StandingState(StateMachine stateMachine, Character character) : base(stateMachine, character)
+    public StandingState(StateMachine stateMachine, Player player) : base(stateMachine, player)
     {
     }
 
@@ -32,14 +32,13 @@ public class StandingState : GroundedState
 
         if (_jumped)
         {
-            Character.AnimationStop();
-            StateMachine.ChangeState(Character.Jumping);
+            StateMachine.ChangeState(Player.Jumping);
         }
 
         if (_attacked)
         {
-            Character.AnimationStop();
-            StateMachine.ChangeState(Character.Attacking);
+            Player.AnimationStop();
+            StateMachine.ChangeState(Player.Attacking);
         }
     }
 }

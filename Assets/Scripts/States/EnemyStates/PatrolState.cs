@@ -20,7 +20,7 @@ public class PatrolState : EnemyState
         base.LogicUpdate();
         Enemy.Patrol();
 
-        if(Enemy.CheckDistance(Enemy.Character.transform.position) <= Enemy.ChaseDistance)
+        if(Enemy.CheckDistance(Enemy.Player.transform.position) <= Enemy.ChaseDistance)
         {
             Enemy.StopAnimation();
             Enemy.StateMachine.ChangeState(Enemy.Chasing);

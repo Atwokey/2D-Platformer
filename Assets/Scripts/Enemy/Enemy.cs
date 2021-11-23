@@ -8,12 +8,15 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health;
     [SerializeField] private float _speed;
-    [SerializeField] private Character _character;
+    [SerializeField] private int _damage;
+    [SerializeField] private Player _player;
     [SerializeField] private GameObject _patrolArea;
     [SerializeField] private float _attackDistance;
     [SerializeField] private float _delayBeforeAttack;
     [SerializeField] private float _chaseDistance;
     [SerializeField] private float _blindDistance;
+    [SerializeField] private float _circleOffsetX;
+    [SerializeField] private CircleCollider2D _attackCollider;
 
     private StateMachine _stateMachine;
     private PatrolState _patroling;
@@ -33,7 +36,8 @@ public class Enemy : MonoBehaviour
     public float DelayBeforeAttack => _delayBeforeAttack;
     public float ChaseDistance => _chaseDistance;
     public float BlindDistance => _blindDistance;
-    public Character Character => _character;
+    public Player Player => _player;
+    public int Damage => _damage;
 
     private void Start()
     {
@@ -56,14 +60,24 @@ public class Enemy : MonoBehaviour
 
     public void Move()
     {
-        Vector3 direction = (_currentTarget -  transform.position).normalized;
-
-        if (direction.x < 0)
-            _renderer.flipX = true;
-        else if (direction.x > 0)
-            _renderer.flipX = false;
-
+        CheckDirection();
         transform.position = Vector2.MoveTowards(transform.position, _currentTarget,_speed * Time.deltaTime);
+    }
+
+    private void CheckDirection()
+    {
+        Vector3 direction = (_currentTarget - transform.position).normalized;
+
+        if(direction.x > 0)
+        {
+            _renderer.flipX = false;
+            _attackCollider.offset = new Vector2(_circleOffsetX, 0); 
+        }
+        else if(direction.x < 0)
+        {
+            _renderer.flipX = true;
+            _attackCollider.offset = new Vector2(-(1 + _circleOffsetX), 0);
+        }
     }
 
     public void Patrol()
@@ -89,12 +103,11 @@ public class Enemy : MonoBehaviour
     public void ChangeDirection()
     {
         _currentTarget = _points[_currentPoint].transform.position;
-
     }
 
     public void Chase()
     {
-        _currentTarget = _character.transform.position;
+        _currentTarget = _player.transform.position;
         Move();
     }
 

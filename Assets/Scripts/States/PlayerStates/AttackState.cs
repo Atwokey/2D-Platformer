@@ -7,7 +7,7 @@ public class AttackState : PlayerState
     private float _delay;
     private float _elapsedTime;
 
-    public AttackState(StateMachine stateMachine, Character character) : base(stateMachine, character)
+    public AttackState(StateMachine stateMachine, Player player) : base(stateMachine, player)
     {
     }
 
@@ -16,9 +16,8 @@ public class AttackState : PlayerState
         base.Enter();
         _delay = 0.5f;
         _elapsedTime = 0;
-        Character.Attack();
-        Character.AnimationPlay("attack1");
-        
+        Player.Assault.Attack();
+        Player.AnimationPlay("attack1");
     }
 
     public override void LogicUpdate()
@@ -29,8 +28,8 @@ public class AttackState : PlayerState
 
         if(_elapsedTime >= _delay)
         {
-            Character.AnimationStop();
-            StateMachine.ChangeState(Character.Standing);
+            Player.AnimationStop();
+            StateMachine.ChangeState(Player.Standing);
         }
     }
 }
